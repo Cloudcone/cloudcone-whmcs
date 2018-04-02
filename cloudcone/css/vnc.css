@@ -1,0 +1,14 @@
+.alert-info {
+    background-color: #5bc0de !important;
+}
+.alert-warning {
+    background-color: #e2b929 !important;
+}
+.alert-danger {
+    background-color: #c1253c !important;
+}
+#noVNC_status {
+    padding-top: 0 !important;
+    font-weight: normal !important;
+    color: #fff !important;
+}

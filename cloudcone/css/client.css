@@ -1,0 +1,21 @@
+/* Product Details */
+.ccone-server-info label + h4 {
+    margin-top: 0;
+}
+.ccone-server-info label {
+    margin-top: 10px;
+}
+.ccone-server-info label {
+    margin-top: 10px;
+}
+.ccone-server-info .progress.has-description {
+    margin-bottom: 0;
+}
+.ccone-server-info .progress .description {
+    margin-bottom: 10px;
+}
+
+/* Charts */
+.ccone-chart {
+    margin-bottom: 30px;
+}
