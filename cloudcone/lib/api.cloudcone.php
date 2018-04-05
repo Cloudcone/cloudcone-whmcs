@@ -33,6 +33,8 @@ class CloudConeAPI {
         ));
 
         $return = json_decode(curl_exec($ch), true);
+        curl_close($ch);
+        
         if (isset($return['status']) && $return['status'] > 0) {
             return json_encode($return);
         } else {
