@@ -63,6 +63,7 @@ function cloudcone_setup_configurables($product_id) {
                         $option_id = $q->fetchObject()->id;
                     }
 
+                    $q = $pdo->query("DELETE FROM tblpricing WHERE type = 'configoptions' AND relid IN ( SELECT * FROM ( SELECT id FROM tblproductconfigoptionssub WHERE configid = $option_id) AS subquery )");
                     $q = $pdo->query("DELETE FROM tblproductconfigoptionssub WHERE configid = $option_id");
 
                     $q = $pdo->prepare("INSERT INTO tblproductconfigoptionssub (configid, optionname, hidden) VALUES (:configid, :optionname, :hidden)");
@@ -72,6 +73,9 @@ function cloudcone_setup_configurables($product_id) {
                             ':optionname' => (isset($sub_option['rawName'])) ? $sub_option['rawName'] : $sub_option['name'],
                             ':hidden' => (isset($sub_option['hidden'])) ? $sub_option['hidden'] : 0
                         ]);
+
+                        $sub_option_id = $pdo->lastInsertId();
+                        $q2 = $pdo->query("INSERT INTO tblpricing (id, type, currency, relid, msetupfee, qsetupfee, ssetupfee, asetupfee, bsetupfee, tsetupfee, monthly, quarterly, semiannually, annually, biennially, triennially) VALUES (NULL, 'configoptions', '1', $sub_option_id, '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0')");
                     }
                 }
 
