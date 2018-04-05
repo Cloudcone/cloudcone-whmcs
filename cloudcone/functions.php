@@ -138,5 +138,10 @@ function cloudcone_get_service_params($serviceid, $uid) {
 }
 
 function cloudcone_get_config_options() {
-    return file_get_contents('https://app.cloudcone.com/webhook/whmcs');
+    $ch = curl_init('https://app.cloudcone.com/webhook/whmcs');
+    curl_setopt($ch, CURLOPT_HEADER, false);
+    $response = curl_exec($ch);
+    curl_close($ch);
+
+    return $response;
 }
