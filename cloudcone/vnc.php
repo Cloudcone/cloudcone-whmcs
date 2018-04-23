@@ -209,7 +209,7 @@ $vnc_data = $vnc_data['__data'];
                            'onXvpInit':    xvpInit,
                            'onPasswordRequired':  passwordRequired
                        });
-            rfb.connect('<? echo $vnc_data['socket_host'] ?>', '<? echo $vnc_data['socket_port'] ?>', '<? echo $vnc_data['socket_pass'] ?>', '?token=<? echo $vnc_data['socket_hash'] ?>');
+            rfb.connect('<?php echo $vnc_data['socket_host'] ?>', '<?php echo $vnc_data['socket_port'] ?>', '<?php echo $vnc_data['socket_pass'] ?>', '?token=<?php echo $vnc_data['socket_hash'] ?>');
         };
         </script>
 <script>
